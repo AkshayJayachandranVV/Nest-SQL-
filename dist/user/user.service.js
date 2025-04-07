@@ -26,6 +26,12 @@ let UserService = class UserService {
         const newUser = this.userRepository.create(createUserDto);
         return await this.userRepository.save(newUser);
     }
+    async getUser(email) {
+        const user = this.userRepository.findOne({
+            where: { email },
+        });
+        return user;
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

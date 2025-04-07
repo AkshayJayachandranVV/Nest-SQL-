@@ -25,6 +25,10 @@ let UserController = class UserController {
         await this.userService.createUser(createUserDto);
         return { message: "user created succesfully" };
     }
+    async getUser(email) {
+        const data = await this.userService.getUser(email);
+        return data;
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -34,6 +38,13 @@ __decorate([
     __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "createUser", null);
+__decorate([
+    (0, common_1.Get)('fetch/:email'),
+    __param(0, (0, common_1.Param)('email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getUser", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])

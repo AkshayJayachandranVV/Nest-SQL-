@@ -6,4 +6,5 @@ export declare class UserController {
     createUser(createUserDto: CreateUserDto): Promise<{
         message: string;
     }>;
+    getUser(email: string): Promise<import("./enitity/user.entity").User | null>;
 }

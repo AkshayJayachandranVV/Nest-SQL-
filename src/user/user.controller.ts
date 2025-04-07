@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post ,Get,Param} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user-dto';
 
@@ -10,6 +10,12 @@ export class UserController {
     async createUser(@Body() createUserDto : CreateUserDto){
        await this.userService.createUser(createUserDto);
        return {message : "user created succesfully"}
+    }
+
+    @Get('fetch/:email')
+    async getUser(@Param('email')email : string){
+       const data = await this.userService.getUser(email)
+       return data
     }
 
 }
